@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# VolunteerHub - Volunteer Management System
 
-## Getting Started
+VolunteerHub is a modern, full-stack NGO volunteer platform built for **NayePankh Foundation** to streamline volunteer onboarding, profile matching, event registration, and digital credentialing.
 
-First, run the development server:
+## Features Built
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### 1. Account Onboarding & Authentication
+* **Sign Up / Registration**: Secure registration form for new volunteers.
+* **Authentication**: Password hashing with `bcryptjs` and session management via `NextAuth.js`.
+* **Account Status**: New volunteer profiles start as pending until review.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Volunteer Profile Management
+* Update personal details, contact details, profile picture, and education.
+* Add specific skills (e.g., Teaching, First Aid, Event Planning) and interests.
+* Track total accumulated volunteer hours directly on the profile.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Event Browser & AI Matching Recommendations
+* Browse and search open NGO events.
+* **AI Match Score**: Calculate dynamic compatibility scores (e.g., 85% match) based on the alignment of the volunteer's skills, interests, and past event history with event requirements.
+* View event details, requirements, dates, and locations.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4. Application Tracking
+* Submit applications for volunteer events.
+* Track the status of each application (Pending, Approved, or Rejected) on a real-time status board.
 
-## Learn More
+### 5. Achievement Certificates & Public Verification
+* Download beautifully formatted PDF certificates for completed events.
+* Certificates include verification QR codes.
+* **Public Verification**: A dedicated `/verify/[code]` route allows third parties to scan the certificate's QR code and instantly verify its authenticity.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Technical Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* **Framework**: Next.js 15 (App Router)
+* **Language**: TypeScript
+* **Database**: Neon PostgreSQL
+* **Styling**: Tailwind CSS & Shadcn UI
+* **Forms & Validation**: React Hook Form & Zod
+* **Authentication**: NextAuth.js (Auth.js)
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Local Setup
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/Jaswanth-Reddy-2006/NayePankh-Foundation.git
+   cd NayePankh-Foundation
+   ```
+
+2. **Configure environment variables**:
+   Create a `.env.local` file in the root directory:
+   ```env
+   DATABASE_URL=postgresql://neondb_owner:npg_2UVoaikZhBI5@ep-holy-mode-attf70lr-pooler.c-9.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
+   NEXTAUTH_URL=http://localhost:3000
+   NEXTAUTH_SECRET=secret_token_session_hash_volunteer_hub_2026_nxt
+   ```
+
+3. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+4. **Initialize & Seed the Database**:
+   Start the development server:
+   ```bash
+   npm run dev
+   ```
+   Navigate to the database seeding endpoint in your browser to build the Postgres tables and insert initial mock data:
+   `http://localhost:3000/api/seed`
+
+5. **Start Development Server**:
+   ```bash
+   npm run dev
+   ```
+   Open `http://localhost:3000` to access the platform.
