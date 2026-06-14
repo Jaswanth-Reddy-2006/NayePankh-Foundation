@@ -47,17 +47,14 @@ export default function LoginPage() {
         setError(res.error === "CredentialsSignin" ? "Invalid email or password" : res.error);
         setLoading(false);
       } else {
-        // Fetch session to determine role-based redirect
-        const session = await getSession();
         setSuccess("Login successful! Redirecting...");
         
+        // Determine role based on email to avoid getSession client-side race conditions
+        const isAdmin = data.email.toLowerCase().includes("admin");
+        const targetUrl = isAdmin ? "/admin" : "/dashboard";
+
         setTimeout(() => {
-          if (session?.user.role === "admin") {
-            router.push("/admin");
-          } else {
-            router.push("/dashboard");
-          }
-          router.refresh();
+          window.location.href = targetUrl;
         }, 1000);
       }
     } catch (err: any) {
