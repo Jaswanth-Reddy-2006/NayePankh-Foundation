@@ -41,6 +41,21 @@ VolunteerHub is a modern, full-stack NGO volunteer platform built for **NayePank
 
 ---
 
+## Administrator & Database Seeding
+
+The platform includes a fully-featured Administrator Dashboard to manage volunteers, events, approve applications, and generate certificates.
+
+### 1. Database Seeding (Required on first deploy)
+To initialize the database tables and populate initial mock data (including the default admin account):
+* **Local**: Start the dev server and visit `http://localhost:3000/api/seed` in your browser.
+* **Production (Vercel)**: Once deployed, visit `https://your-app-domain.vercel.app/api/seed` in your browser to seed your Neon PostgreSQL database.
+
+### 2. Default Administrator Credentials
+* **Email**: `admin@volunteerhub.org`
+* **Password**: `admin123`
+
+---
+
 ## Local Setup
 
 1. **Clone the repository**:
